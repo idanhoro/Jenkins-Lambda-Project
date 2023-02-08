@@ -11,7 +11,7 @@ resource "aws_s3_bucket" "bucket_idanho" {
 data "archive_file" "code_archive" {
   type        = "zip"
   source_dir  = "../src"
-  output_path = "../Terraform/lambda_handler.zip"
+  output_path = "../terraform/lambda_handler.zip"
 }
 
 resource "aws_s3_object" "code_object" {
