@@ -6,13 +6,31 @@ pipeline {
                 sh 'tar -czvf function.tar.gz .'
             }
         }
-        stage('Deploy infrastructure') {
+        stage('Terraform init') {
             steps {
-                sh 'pwd'
-                sh 'cd Terraform/'
-                sh 'pwd'
-                sh 'terraform init'
-                sh 'terraform apply -auto-approve'
+                dir('terraform') {
+                sh '''
+                    terraform init
+                '''
+                }
+            }
+        }
+        stage('Terraform plan') {
+            steps {
+                dir('terraform') {
+                sh '''
+                    terraform plan
+                '''
+                }
+            }
+        }
+                stage('Terraform apply') {
+            steps {
+                dir('terraform') {
+                sh '''
+                    terraform apply
+                '''
+                }
             }
         }
     }
