@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Deploy infrastructure') {
             steps {
-                sh 'cd Terraform'
+                sh 'cd Terraform/'
                 sh 'pwd'
                 sh 'echo pwd'
                 sh 'terraform init'
