@@ -1,16 +1,21 @@
 pipeline {
     agent any
+    environment {
+      TF_IN_AUTOMATION = 'true'
+    }
     stages {
         stage('Build') {
             steps {
-                sh 'tar -czvf function.tar.gz .'
+                sh 'tar -czf function.tar.gz .'
             }
         }
         stage('Terraform init') {
             steps {
                 dir('terraform') {
                 sh '''
-                    terraform init
+                    pwd
+                    ls                   
+                    terraform init -no-color -input=false
                 '''
                 }
             }
@@ -19,7 +24,7 @@ pipeline {
             steps {
                 dir('terraform') {
                 sh '''
-                    terraform plan
+                    terraform plan -no-color -out=tfplan -input=false
                 '''
                 }
             }
@@ -28,7 +33,7 @@ pipeline {
             steps {
                 dir('terraform') {
                 sh '''
-                    terraform apply
+                    terraform apply -auto-approve -no-color -input=false tfplan
                 '''
                 }
             }

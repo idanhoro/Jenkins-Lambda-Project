@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "bucket_idanho" {
-  bucket = "bucket-idanho"
+  bucket = "bucket-idanho55"
 }
 
 data "archive_file" "code_archive" {
