@@ -1,5 +1,16 @@
-stage('Build') {
-    steps {
-        sh 'zip -r function.zip .'
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'zip -r function.zip .'
+            }
+        }
+        stage('Deploy infrastructure') {
+            steps {
+                sh 'terraform init'
+                sh 'terraform apply -auto-approve'
+            }
+        }
     }
 }
