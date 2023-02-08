@@ -149,4 +149,5 @@ terraform.rc
 **/.terraform/*
 .terraform.lock.hcl
 
+tfplan
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,terraform
