@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Deploy infrastructure') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'b7812d35-a099-4c56-b083-1c4b5fb96b42', url: 'https://github.com/idanhoro/Jenkins-Lambda-Project.git']]])
+                sh 'cd terraform'
                 sh 'terraform init'
                 sh 'terraform apply -auto-approve'
             }
