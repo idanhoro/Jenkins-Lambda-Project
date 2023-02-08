@@ -82,3 +82,7 @@ resource "aws_lambda_permission" "api_gateway_permissions" {
 
   source_arn = "${aws_apigatewayv2_api.api_gateway.execution_arn}/*/*"
 }
+
+output "api_gateway_url" {
+  value = aws_apigatewayv2_stage.api_gateway_stage.invoke_url
+}
