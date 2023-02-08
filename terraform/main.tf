@@ -44,5 +44,41 @@ resource "aws_lambda_function" "lambda_function" {
   s3_key    = aws_s3_object.code_object.key
   role      = aws_iam_role.lambda_execution_role.arn
   handler   = "lambda_function.lambda_handler"
-  runtime   = "python3.8"
+  runtime   = "python3.9"
+}
+
+resource "aws_apigatewayv2_api" "api_gateway" {
+  name          = "serverless_lambda_gw"
+  protocol_type = "HTTP"
+}
+
+resource "aws_apigatewayv2_integration" "api_gateway_integration" {
+  api_id = aws_apigatewayv2_api.api_gateway.id
+
+  integration_uri    = aws_lambda_function.lambda_function.invoke_arn
+  integration_type   = "AWS_PROXY"
+  integration_method = "POST"
+}
+
+resource "aws_apigatewayv2_stage" "api_gateway_stage" {
+  api_id = aws_apigatewayv2_api.api_gateway.id
+
+  name        = "serverless_lambda_stage"
+  auto_deploy = true
+}
+
+resource "aws_apigatewayv2_route" "api_gateway_route" {
+  api_id = aws_apigatewayv2_api.api_gateway.id
+
+  route_key = "GET /"
+  target    = "integrations/${aws_apigatewayv2_integration.api_gateway_integration.id}"
+}
+
+resource "aws_lambda_permission" "api_gateway_permissions" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.lambda_function.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.api_gateway.execution_arn}/*/*"
 }
