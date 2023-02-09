@@ -1,7 +1,7 @@
 # Jenkins-Lambda-Project
 <img src="./images/jenkins.png" width="90"/><img src="./images/lambda.png" width="237"/><img src="./images/terraform.png" width="249"/>
 
-This project provides a comprehensive guide on how to use Jenkins to deploy a Serverless Lambda function using Terraform.
+This project provides a comprehensive guide on how to use Jenkins to deploy a Serverless Lambda function using Terraform and store the application archive in S3 bucket.
 
 ## Prerequisites
 * Docker installed on your local machine with jenkins container -> [Guide to create jenkins container](https://hub.docker.com/_/jenkins)
