@@ -5,7 +5,6 @@ This project provides a comprehensive guide on how to use Jenkins to deploy a Se
 
 ## Prerequisites
 * Docker installed on your local machine with jenkins container -> [Guide to create jenkins container](https://hub.docker.com/_/jenkins)
-* Terraform installed on your local machine
 * AWS Account
 
 ## Setting up AWS
@@ -45,7 +44,9 @@ Replace `ACCESS_KEY` and `SECRET_KEY` with the access key and secret access key 
 4. Now everything should run automaticly, the jenkins job will look for `jenkinsfile` and will follow the pipeline instructions there.
 
 Output photo :
+
 <img src="./images/output.png" width="700"/> 
+
 <img src="./images/working_server.png" width="700"/> 
 
 
