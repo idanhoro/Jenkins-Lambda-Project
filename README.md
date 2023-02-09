@@ -1,5 +1,7 @@
 # Jenkins-Lambda-Project
-<img src="./images/jenkins.png" width="90"/><img src="./images/lambda.png" width="237"/><img src="./images/terraform.png" width="249"/>
+<!-- <img src="./images/jenkins.png" width="90"/><img src="./images/lambda.png" width="237"/><img src="./images/terraform.png" width="249"/><img src="./images/s3.png" width="249"/> -->
+
+<img src="./images/diagram.png" width="700"/>
 
 This project provides a comprehensive guide on how to use Jenkins to deploy a Serverless Lambda function using Terraform and zip the contents of the Lambda function directory Store the zip file in an S3 bucket.
 
