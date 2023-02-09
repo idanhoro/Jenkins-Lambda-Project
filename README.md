@@ -33,9 +33,17 @@ Create a Terraform variable file named terraform.tfvars with the following conte
 ```terraform
     access_key = "ACCESS_KEY"
     secret_key = "SECRET_KEY"
+    bucket_name = "your_bucket_name"
+    region = "your choosen region"
 ```
 
 Replace `ACCESS_KEY` and `SECRET_KEY` with the access key and secret access key obtained in step 2 of the Setting up AWS section.
+
+Replace `your_bucket_name` with your bucket's name.
+Replace `your_chosen_region` with the region you have selected.
+
+The other variables are available as defaults, so you don't have to change them.
+
 
 ## Start project
 1. Login to your jenkins server.
